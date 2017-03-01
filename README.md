@@ -29,6 +29,12 @@ Repository for experimenting with git features
   the older commit where I added the image, that older image had to be
   downloaded and the size grew to 21M so things seem to be working as
   expected!
+- After adding the 1.3M image .git was 22M.
+- After rotating that image it becamse 1.4 and after committing+pushing .git
+  was 23M which makes sense (after a fresh clone it's only 19M because that
+  23M came from switching to older versions of lfs tracked images). So we see
+  that on each commit of the image not tracked by lfs the git repository grows
+  roughly by the size of the image.
 
 
 ## Git lfs
@@ -77,3 +83,7 @@ So is git lfs still not stable? Or am I doing something wrong?
 Another thing, when I had the failed push I just retried and things worked.
 But even after they did, github still displayed the non-rotated image for
 quite a while. So cache invalidation seems slow?
+
+### How Does it Work in circleci?
+
+Or more specifically, does circleci use git with the lfs extension?
