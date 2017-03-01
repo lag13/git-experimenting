@@ -18,6 +18,10 @@ Repository for experimenting with git features
 - 1016K before adding a png file (which I've told git lfs to track).
 - 1.0M after adding png file. I probably should have had `du` use a more
   accurate number and/or used a bigger png file. Will do that now.
+- 5.6M after adding png file. And 5.3M on a fresh clone (also, I got an error
+  when I tried to pull instead of clone, unsure why this happened). I'm a
+  little confused here. I thought the .git folder wouldn't get touched in
+  terms of these files being tracked by git lfs.
 
 
 ## Git lfs
