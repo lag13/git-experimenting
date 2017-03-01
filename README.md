@@ -87,3 +87,5 @@ quite a while. So cache invalidation seems slow?
 ### How Does it Work in circleci?
 
 Or more specifically, does circleci use git with the lfs extension?
+
+The answer is yes, circleci does use git with the lfs extension.
