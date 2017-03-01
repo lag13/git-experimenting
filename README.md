@@ -2,41 +2,6 @@
 
 Repository for experimenting with git features
 
-## .git Size History
-
-- 92K (original)
-- 684K (after committing to master a 572K jpg)
-- 984K (after committing+pushing a 304K jpg to a seperate branch). Similar
-  size when cloning that repository.
-- 984K (after deleting that separate branch). But 660K after cloning the
-  repository after the branch was deleted from github. Does this mean that git
-  clone will not include any history from deleted branches? It seems that your
-  local git will remember everything you've ever done (even deleting branches)
-  and allow you to recover (unless you REALLY mess something up) but when you
-  pull something from another git repository it only gives the things which
-  are not deleted.
-- 1016K before adding a png file (which I've told git lfs to track).
-- 1.0M after adding png file. I probably should have had `du` use a more
-  accurate number and/or used a bigger png file. Will do that now.
-- 5.6M after adding png file. And 5.3M on a fresh clone (also, I got an error
-  when I tried to pull instead of clone, unsure why this happened). I'm a
-  little confused here. I thought the .git folder wouldn't get touched in
-  terms of these files being tracked by git lfs.
-- After rotating the 4.6M png file, it somehow became a 15M png file. I'm not
-  sure what Preview is doing under the hood here. Either way when I pull now
-  the .git directory is 16M so lfs worked! It only downloaded the image that
-  we needed instead of the entire history for that image. When I switched to
-  the older commit where I added the image, that older image had to be
-  downloaded and the size grew to 21M so things seem to be working as
-  expected!
-- After adding the 1.3M image .git was 22M.
-- After rotating that image it becamse 1.4 and after committing+pushing .git
-  was 23M which makes sense (after a fresh clone it's only 19M because that
-  23M came from switching to older versions of lfs tracked images). So we see
-  that on each commit of the image not tracked by lfs the git repository grows
-  roughly by the size of the image.
-
-
 ## Git lfs
 
 Super easy to use are my first impressions! I really don't have to do any
@@ -83,6 +48,40 @@ So is git lfs still not stable? Or am I doing something wrong?
 Another thing, when I had the failed push I just retried and things worked.
 But even after they did, github still displayed the non-rotated image for
 quite a while. So cache invalidation seems slow?
+
+### .git Size History
+
+- 92K (original)
+- 684K (after committing to master a 572K jpg)
+- 984K (after committing+pushing a 304K jpg to a seperate branch). Similar
+  size when cloning that repository.
+- 984K (after deleting that separate branch). But 660K after cloning the
+  repository after the branch was deleted from github. Does this mean that git
+  clone will not include any history from deleted branches? It seems that your
+  local git will remember everything you've ever done (even deleting branches)
+  and allow you to recover (unless you REALLY mess something up) but when you
+  pull something from another git repository it only gives the things which
+  are not deleted.
+- 1016K before adding a png file (which I've told git lfs to track).
+- 1.0M after adding png file. I probably should have had `du` use a more
+  accurate number and/or used a bigger png file. Will do that now.
+- 5.6M after adding png file. And 5.3M on a fresh clone (also, I got an error
+  when I tried to pull instead of clone, unsure why this happened). I'm a
+  little confused here. I thought the .git folder wouldn't get touched in
+  terms of these files being tracked by git lfs.
+- After rotating the 4.6M png file, it somehow became a 15M png file. I'm not
+  sure what Preview is doing under the hood here. Either way when I pull now
+  the .git directory is 16M so lfs worked! It only downloaded the image that
+  we needed instead of the entire history for that image. When I switched to
+  the older commit where I added the image, that older image had to be
+  downloaded and the size grew to 21M so things seem to be working as
+  expected!
+- After adding the 1.3M image .git was 22M.
+- After rotating that image it becamse 1.4 and after committing+pushing .git
+  was 23M which makes sense (after a fresh clone it's only 19M because that
+  23M came from switching to older versions of lfs tracked images). So we see
+  that on each commit of the image not tracked by lfs the git repository grows
+  roughly by the size of the image.
 
 ### How Does it Work in circleci?
 
