@@ -89,4 +89,4 @@ Or more specifically, does circleci use git with the lfs extension?
 
 The answer is yes, circleci does use git with the lfs extension. More
 specifically `Ubuntu 14.04 (Trusty)` has git lfs, `Ubuntu 12.04 (Precise)`
-does not.
+does not. Let's see what it takes to download git lfs.
